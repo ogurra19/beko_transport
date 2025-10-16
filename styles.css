@@ -79,6 +79,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 70px;
+    position: relative;
 }
 
 .nav-logo {
@@ -203,6 +204,97 @@ body {
 .cta-button:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow);
+}
+
+/* Mobile Navigation */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-left: 20px;
+    transition: var(--transition);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mobile-menu-toggle:hover {
+    border-color: var(--primary-color);
+}
+
+.mobile-menu-toggle span {
+    width: 20px;
+    height: 2px;
+    background: var(--text-dark);
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.nav-menu.mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    gap: 0;
+    padding: 20px 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .nav-menu.mobile-menu {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom-color: var(--border-dark);
+}
+
+.nav-menu.mobile-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-menu.mobile-menu .nav-link {
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+.nav-menu.mobile-menu .nav-link:last-child {
+    border-bottom: none;
+}
+
+.nav-menu.mobile-menu .theme-toggle,
+.nav-menu.mobile-menu .cta-button {
+    margin: 15px 30px;
+    width: calc(100% - 60px);
+    justify-content: center;
 }
 
 /* Hero Section */
@@ -934,6 +1026,10 @@ body {
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
     }
 
     .hero-container {
