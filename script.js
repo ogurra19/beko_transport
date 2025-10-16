@@ -189,6 +189,25 @@ document.querySelectorAll('.service-card, .feature-item, .value-item, .info-item
 
 // Hero background is static, no need for dynamic updates
 
+// Mobile menu toggle functionality
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+mobileMenuToggle.addEventListener('click', () => {
+    mobileMenuToggle.classList.toggle('active');
+    navMenu.classList.toggle('mobile-menu');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a nav link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        navMenu.classList.remove('mobile-menu');
+        navMenu.classList.remove('active');
+    });
+});
+
 // "Kërko Sherbim" button functionality - scroll to contact section
 document.querySelectorAll('.cta-button, .btn-primary').forEach(button => {
     if (button.textContent.trim() === 'Kërko Sherbim' || button.textContent.trim() === 'Kerko Sherbim') {
