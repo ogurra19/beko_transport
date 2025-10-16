@@ -159,7 +159,7 @@ body {
 
 .theme-toggle {
     background: none;
-    border: 2px solid var(--border-color);
+    border: none;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -172,7 +172,6 @@ body {
 }
 
 .theme-toggle:hover {
-    border-color: var(--primary-color);
     transform: scale(1.05);
 }
 
@@ -208,14 +207,13 @@ body {
 
 /* Mobile Navigation */
 .mobile-menu-toggle {
-    display: none;
+    display: flex;
     background: none;
     border: 2px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 50%;
     width: 40px;
     height: 40px;
     cursor: pointer;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -223,8 +221,15 @@ body {
     margin-left: 20px;
     transition: var(--transition);
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 10px;
+}
+
+.nav-menu {
+    display: none;
+}
+
+.nav-menu.mobile-menu {
+    display: flex;
 }
 
 .mobile-menu-toggle:hover {
@@ -259,6 +264,7 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
+    display: flex;
     flex-direction: column;
     gap: 0;
     padding: 20px 0;
@@ -295,6 +301,14 @@ body {
     margin: 15px 30px;
     width: calc(100% - 60px);
     justify-content: center;
+}
+
+.nav-menu.mobile-menu .theme-toggle {
+    border-radius: 50%;
+}
+
+.nav-menu.mobile-menu .theme-toggle:hover {
+    transform: scale(1.05);
 }
 
 /* Hero Section */
