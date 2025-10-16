@@ -34,7 +34,7 @@ themeToggle.addEventListener('click', () => {
 
 // Logo is already set in HTML, no need for upload functionality
 
-// Contact form handling with WhatsApp
+// Contact form handling with WhatsApp and Email
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', function(event) {
@@ -44,7 +44,6 @@ contactForm.addEventListener('submit', function(event) {
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
-
     if (name === '' || email === '' || phone === '' || message === '') {
         showNotification('Ju lutem plotësoni të gjitha fushat.', 'error');
         return;
@@ -68,6 +67,7 @@ contactForm.addEventListener('submit', function(event) {
     window.open(whatsappURL, '_blank');
 
     showNotification('Mesazhi është hapur në WhatsApp. Ju lutem dërgojeni atje.', 'success');
+
     contactForm.reset();
 });
 
@@ -197,6 +197,13 @@ mobileMenuToggle.addEventListener('click', () => {
     mobileMenuToggle.classList.toggle('active');
     navMenu.classList.toggle('mobile-menu');
     navMenu.classList.toggle('active');
+
+    // Update theme toggle in mobile menu
+    const themeToggle = document.getElementById('themeToggle');
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    themeToggle.innerHTML = isDark
+        ? '<i class="fas fa-sun sun-icon"></i>'
+        : '<i class="fas fa-moon moon-icon"></i>';
 });
 
 // Close mobile menu when clicking on a nav link
